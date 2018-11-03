@@ -1,0 +1,4 @@
+-r base.txt
+
+# Development tools
+tox==2.6.0
