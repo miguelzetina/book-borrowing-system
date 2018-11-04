@@ -5,8 +5,17 @@ psycopg2-binary>=2.7,<2.8
 gunicorn==19.6.0
 
 # Packages
-ipython
-Werkzeug
+django-extensions>=2.1,<2.2
+django-filter==1.0.2
+djangorestframework==3.7.7
+djangorestframework-jsonapi==2.2.0
+djangorestframework-jwt>=1.7,<1.8
+drf-nested-routers>=0.10,<0.11
+drf-yasg==1.6.1
+flex==6.12.0
+swagger_spec_validator==2.1.0
 
 # Unversioned packages
 djangorestframework-camel-case
+ipython
+Werkzeug

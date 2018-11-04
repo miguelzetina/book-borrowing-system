@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,6 @@ WSGI_APPLICATION = 'bookborrowing.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -122,3 +123,38 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 INTERNAL_IPS = ('127.0.0.1',)
+
+PRODUCTION = False
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.realpath(os.path.join(BASE_DIR, '..', 'assets')),
+)
+
+STATIC_ROOT = os.path.realpath(
+    os.path.join(BASE_DIR, '..', '..', 'media', 'assets')
+)
+
+# User uploaded files
+MEDIA_ROOT = os.path.realpath(
+    os.path.join(BASE_DIR, '..', '..', 'media', 'uploads')
+)
+
+MEDIA_URL = '/media/uploads/'
+
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'JWT': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    }
+}

@@ -106,3 +106,4 @@ venv.bak/
 # Editors
 *.swp
 .idea/
+.vscode/
