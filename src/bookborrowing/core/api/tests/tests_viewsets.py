@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from rest_framework_jwt.settings import api_settings
 
-from interprotection.users.models import User
+from bookborrowing.users.models import User
 
 
 class ApiTestMixin(object):

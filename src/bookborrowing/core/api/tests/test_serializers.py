@@ -3,7 +3,7 @@ from django.test import TestCase
 
 from rest_framework import serializers
 
-from ....core.api.serializers import base
+from ...api.serializers import base
 
 
 class DynamicFieldsSerializerTestCase(TestCase):
