@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 ]
 
 BOOKBORROWING_APPS = [
-    'bookborrowing.users'
+    'bookborrowing.users',
+    'bookborrowing.authentication'
 ]
 
 INSTALLED_APPS += BOOKBORROWING_APPS
