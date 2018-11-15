@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+import datetime
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -201,4 +202,32 @@ REST_FRAMEWORK = {
     'DEFAULT_METADATA_CLASS': (
         'rest_framework_json_api.metadata.JSONAPIMetadata'
     )
+}
+
+
+# JWT_AUTH for jwt
+JWT_AUTH = {
+    'JWT_ENCODE_HANDLER': (
+        'rest_framework_jwt.utils.jwt_encode_handler'
+    ),
+    'JWT_DECODE_HANDLER': (
+        'rest_framework_jwt.utils.jwt_decode_handler'
+    ),
+    'JWT_PAYLOAD_HANDLER': (
+        'rest_framework_jwt.utils.jwt_payload_handler'
+    ),
+    'JWT_PAYLOAD_GET_USER_ID_HANDLER': (
+        'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler'
+    ),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': (
+        'rest_framework_jwt.utils.jwt_response_payload_handler'
+    ),
+    'VJWT_ALGORITHM': 'HS256',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1800),
+    'JWT_VERIFY': True,
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUDIENCE': None,
+    'JWT_ISSUER': None
 }
