@@ -167,3 +167,37 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+# Django-rest-framework configuration
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 30,
+    'EXCEPTION_HANDLER':
+    'rest_framework_json_api.exceptions.exception_handler',  # noqa
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_json_api.renderers.JSONRenderer',
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+        'rest_framework_json_api.parsers.JSONParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.FormParser',
+    ),
+    'DEFAULT_PAGINATION_CLASS': (
+        'rest_framework_json_api.pagination.PageNumberPagination'
+    ),
+    'DEFAULT_METADATA_CLASS': (
+        'rest_framework_json_api.metadata.JSONAPIMetadata'
+    )
+}
