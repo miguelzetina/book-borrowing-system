@@ -1,6 +1,9 @@
-from django.urls import path
+from django.urls import path, re_path
 
-from rest_framework_jwt.views import refresh_jwt_token, verify_jwt_token
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 from .routers import router
 from ..autodiscover import autodiscover
@@ -9,14 +12,10 @@ from ..autodiscover import autodiscover
 autodiscover()
 
 urlpatterns = router.urls + [
-    path(
-        'auth/token-refresh',
-        refresh_jwt_token,
-        name='auth-token-refresh'
+    re_path(
+        '^token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'
     ),
-    path(
-        'auth/token-verify',
-        verify_jwt_token,
-        name='auth-token-verify'
+    re_path(
+        '^token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'
     ),
 ]

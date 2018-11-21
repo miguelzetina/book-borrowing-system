@@ -18,6 +18,7 @@ class SingleObjectRouter(BaseRouter):
                 'delete': 'destroy'
             },
             name='{basename}-detail',
+            detail=False,
             initkwargs={'suffix': 'Instance'}
         ),
         # Dynamically generated detail routes.

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_filters',
     'rest_framework',
+    'rest_framework_simplejwt',
     'drf_yasg'
 ]
 
@@ -181,7 +183,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend'
@@ -205,29 +207,23 @@ REST_FRAMEWORK = {
 }
 
 
-# JWT_AUTH for jwt
-JWT_AUTH = {
-    'JWT_ENCODE_HANDLER': (
-        'rest_framework_jwt.utils.jwt_encode_handler'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'AUTH_TOKEN_CLASSES': (
+        'rest_framework_simplejwt.tokens.AccessToken',
     ),
-    'JWT_DECODE_HANDLER': (
-        'rest_framework_jwt.utils.jwt_decode_handler'
-    ),
-    'JWT_PAYLOAD_HANDLER': (
-        'rest_framework_jwt.utils.jwt_payload_handler'
-    ),
-    'JWT_PAYLOAD_GET_USER_ID_HANDLER': (
-        'rest_framework_jwt.utils.jwt_get_user_id_from_payload_handler'
-    ),
-    'JWT_RESPONSE_PAYLOAD_HANDLER': (
-        'rest_framework_jwt.utils.jwt_response_payload_handler'
-    ),
-    'VJWT_ALGORITHM': 'HS256',
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1800),
-    'JWT_VERIFY': True,
-    'JWT_VERIFY_EXPIRATION': True,
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
-    'JWT_AUDIENCE': None,
-    'JWT_ISSUER': None
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': datetime.timedelta(days=1),
 }

@@ -18,6 +18,7 @@ class SimpleRouter(BaseRouter):
                 'get': 'list',
                 'post': 'create'
             },
+            detail=False,
             name='{basename}-list',
             initkwargs={'suffix': 'List'}
         ),
@@ -38,6 +39,7 @@ class SimpleRouter(BaseRouter):
                 'patch': 'partial_update',
                 'delete': 'destroy'
             },
+            detail=True,
             name='{basename}-detail',
             initkwargs={'suffix': 'Instance'}
         ),

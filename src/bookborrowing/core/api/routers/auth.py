@@ -14,6 +14,7 @@ class AuthenticationRouter(BaseRouter):
             mapping={
                 'post': 'authenticate',
             },
+            detail=True,
             name='{basename}-authenticate',
             initkwargs={'suffix': 'Instance'}
         ),
