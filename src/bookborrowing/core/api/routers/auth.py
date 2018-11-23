@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from rest_framework.routers import DynamicDetailRoute, Route
+from rest_framework.routers import DynamicRoute, Route
 from rest_framework.routers import SimpleRouter as BaseRouter
 
 
@@ -14,15 +14,16 @@ class AuthenticationRouter(BaseRouter):
             mapping={
                 'post': 'authenticate',
             },
-            detail=True,
+            detail=False,
             name='{basename}-authenticate',
             initkwargs={'suffix': 'Instance'}
         ),
         # Dynamically generated detail routes.
         # Generated using @detail_route decorator on methods of the viewset.
-        DynamicDetailRoute(
-            url=r'^{prefix}/{methodnamehyphen}{trailing_slash}$',
-            name='{basename}-{methodnamehyphen}',
+        DynamicRoute(
+            url=r'^{prefix}/{url_path}$',
+            name='{basename}-{ur_name}',
+            detail=True,
             initkwargs={}
         ),
     ]

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from rest_framework.routers import DynamicDetailRoute, DynamicListRoute, Route
+from rest_framework.routers import DynamicRoute, Route
 from rest_framework.routers import SimpleRouter as BaseRouter
 
 
@@ -23,11 +23,13 @@ class SimpleRouter(BaseRouter):
             initkwargs={'suffix': 'List'}
         ),
         # Dynamically generated list routes.
-        # Generated using @list_route decorator
-        # on methods of the viewset.
-        DynamicListRoute(
-            url=r'^{prefix}/{methodnamehyphen}{trailing_slash}$',
-            name='{basename}-{methodnamehyphen}',
+        # Generated using @action decorator
+        # on methods of the viewset with param
+        # detail=False.
+        DynamicRoute(
+            url=r'^{prefix}/{url_path}$',
+            name='{basename}-{url_name}',
+            detail=False,
             initkwargs={}
         ),
         # Detail route.
@@ -44,10 +46,13 @@ class SimpleRouter(BaseRouter):
             initkwargs={'suffix': 'Instance'}
         ),
         # Dynamically generated detail routes.
-        # Generated using @detail_route decorator on methods of the viewset.
-        DynamicDetailRoute(
-            url=r'^{prefix}/{lookup}/{methodnamehyphen}{trailing_slash}$',
-            name='{basename}-{methodnamehyphen}',
+        # Generated using @action decorator
+        # on methods of the viewset with param
+        # detail=True.
+        DynamicRoute(
+            url=r'^{prefix}/{lookup}/{url_path}$',
+            name='{basename}-{url_name}',
+            detail=True,
             initkwargs={}
         ),
     ]
