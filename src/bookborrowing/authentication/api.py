@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from drf_yasg.utils import swagger_auto_schema
 
 from rest_framework import status
-from rest_framework.decorators import list_route
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -29,10 +29,9 @@ class LoginAPIView(GenericViewSet):
     swagger_schema = CustomJSONAPISchema
 
     @swagger_auto_schema(
-        responses={200: LoginBackOfficeResponseSerializer},
         request_body=LoginBackOfficeSerializer
     )
-    @list_route(methods=['POST'])
+    @action(detail=False, methods=['POST'], url_path='local', url_name='local')
     def local(self, request, *args, **kwargs):
         """
         User login in the backoffice.
@@ -55,6 +54,7 @@ class LoginAPIView(GenericViewSet):
         login_serializer.is_valid(raise_exception=True)
         user = login_serializer.get_user(data=request.data)
         response_serializer = LoginBackOfficeResponseSerializer(user)
+
         return Response(response_serializer.data)
 
 
