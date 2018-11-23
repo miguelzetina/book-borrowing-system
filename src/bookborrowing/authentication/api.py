@@ -23,31 +23,19 @@ class LoginAPIView(GenericViewSet):
     """
 
     resource_name = ''
-    serializer_class = LoginBackOfficeSerializer
-    local_serializer_class = LoginBackOfficeSerializer
     permission_classes = (AllowAny, )
     swagger_schema = CustomJSONAPISchema
 
     @swagger_auto_schema(
+        responses={
+            201: LoginBackOfficeResponseSerializer
+        },
         request_body=LoginBackOfficeSerializer
     )
-    @action(detail=False, methods=['POST'], url_path='local', url_name='local')
+    @action(detail=False, methods=['POST'])
     def local(self, request, *args, **kwargs):
         """
         User login in the backoffice.
-        ---
-        Response 200
-        ---
-            {
-                'data': {
-                    'type': 'login_backoffice',
-                    'id': <string>,
-                    'attributes': {
-                        'token': <string>,
-                    }
-                }
-            }
-
         """
         self.resource_name = 'login_backoffice'
         login_serializer = LoginBackOfficeSerializer(data=request.data)
@@ -55,7 +43,9 @@ class LoginAPIView(GenericViewSet):
         user = login_serializer.get_user(data=request.data)
         response_serializer = LoginBackOfficeResponseSerializer(user)
 
-        return Response(response_serializer.data)
+        return Response(
+            response_serializer.data, status=status.HTTP_201_CREATED
+        )
 
 
 router.register(
