@@ -14,7 +14,10 @@ class Genre(CatalogueMixin):
     """
     Model representing a book genre.
     """
-    pass
+    class Meta:
+        ordering = ['last_name', 'first_name']
+        verbose_name = _('genre')
+        verbose_name_plural = _('genres')
 
 
 class Author(TimeStampedMixin):
@@ -31,6 +34,8 @@ class Author(TimeStampedMixin):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        verbose_name = _('author')
+        verbose_name_plural = _('authors')
 
     def __str__(self):
         """
@@ -90,6 +95,10 @@ class BookInstance(models.Model):
     status = models.CharField(
         max_length=1, choices=LOAN_STATUS, blank=True, default='a'
     )
+
+    class Meta:
+        verbose_name = _('book instance')
+        verbose_name_plural = _('book instances')
 
     def __str__(self):
         """
