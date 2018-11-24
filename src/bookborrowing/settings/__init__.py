@@ -42,12 +42,14 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'rest_framework_simplejwt',
-    'drf_yasg'
+    'drf_yasg',
+    'isbn_field'
 ]
 
 BOOKBORROWING_APPS = [
     'bookborrowing.users',
-    'bookborrowing.authentication'
+    'bookborrowing.authentication',
+    'bookborrowing.books'
 ]
 
 INSTALLED_APPS += BOOKBORROWING_APPS

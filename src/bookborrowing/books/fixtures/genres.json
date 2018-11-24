@@ -1,0 +1,9 @@
+[
+    {
+        "model": "books.genre",
+        "pk": 1,
+        "fields": {
+            "name": "Genre 1"
+        }
+    }
+]

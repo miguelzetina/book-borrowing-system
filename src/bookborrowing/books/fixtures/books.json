@@ -1,0 +1,13 @@
+[
+    {
+        "model": "books.book",
+        "pk": 1,
+        "fields": {
+            "name": "Book name",
+            "author": [1],
+            "summary": "Summary",
+            "isbn": "1234567890123",
+            "genre": [1]
+        }
+    }
+]
