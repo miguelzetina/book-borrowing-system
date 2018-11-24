@@ -21,7 +21,7 @@ class UserModelsTestCase(TestCase):
         self.assertEqual(user.email, email)
         self.assertEqual(user.role.name, 'superadmin')
         self.assertFalse(user.name)
-        self.assertIsNone(user.last_name)
+        self.assertFalse(user.last_name)
         self.assertTrue(user.is_staff)
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_active)
