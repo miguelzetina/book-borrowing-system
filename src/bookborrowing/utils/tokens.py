@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
-from calendar import timegm
-from datetime import datetime
-
 from django.utils.six import text_type
 
-from jwt import decode
 from rest_framework_simplejwt.tokens import RefreshToken
 
 def create_token(user):
