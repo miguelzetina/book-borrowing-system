@@ -1,0 +1,16 @@
+[
+    {
+        "model": "users.role",
+        "pk": 1,
+        "fields": {
+            "name": "superadmin"
+        }
+    },
+    {
+        "model": "users.role",
+        "pk": 2,
+        "fields": {
+            "name": "admin"
+        }
+    }
+]
