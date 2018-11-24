@@ -1,4 +1,4 @@
-from django,apps import AppCofing
+from django.apps import AppConfig
 
 
 class UsersConfig(AppConfig):
