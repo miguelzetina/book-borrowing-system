@@ -1,0 +1,26 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "name": "Superadmin",
+            "last_name": "Superadmin",
+            "second_last_name": "Superadmin",
+            "email": "superadmin@bookborrowing.com",
+            "password": "pbkdf2_sha256$120000$peoPdJiFz0ME$mJ/1UD2lOQ/OBI+/AXAJynTXeg1tRTflxMy7PiwDh4s=",
+            "role": 1
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "name": "Admin",
+            "last_name": "Admin",
+            "second_last_name": "Admin",
+            "email": "admin@bookborrowing.com",
+            "password": "pbkdf2_sha256$120000$peoPdJiFz0ME$mJ/1UD2lOQ/OBI+/AXAJynTXeg1tRTflxMy7PiwDh4s=",
+            "role": 2
+        }
+    }
+]
