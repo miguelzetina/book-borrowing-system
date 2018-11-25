@@ -31,6 +31,19 @@ class UsersTests(APITestCase, ApiTestMixin):
         self.assertEqual(data["data"][0]["type"], "users")
         self.assertTrue("id" in data["data"][0])
 
+    def test_users_list_search_superadmin_200(self):
+        user = self.create_superuser()
+        token = self.create_token(user)
+        endpoint_url = reverse('api:v1:users-list')
+        response = self.client.get(
+            endpoint_url,
+            {'q': 'search'},
+            HTTP_AUTHORIZATION=token,
+            format='json'
+        )
+        data = json.loads(response._container[0].decode("utf-8"))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_users_list_admin_200(self):
         user = self.create_adminuser()
         token = self.create_token(user)

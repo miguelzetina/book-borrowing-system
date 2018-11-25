@@ -3,14 +3,16 @@
         "model": "users.role",
         "pk": 1,
         "fields": {
-            "name": "superadmin"
+            "name": "superadmin",
+            "description": "Superadmin role"
         }
     },
     {
         "model": "users.role",
         "pk": 2,
         "fields": {
-            "name": "admin"
+            "name": "admin",
+            "description": "Admin role"
         }
     }
 ]

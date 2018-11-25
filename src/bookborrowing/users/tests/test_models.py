@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from bookborrowing.users.models import Role
 
 
 class UserModelsTestCase(TestCase):
@@ -27,3 +28,23 @@ class UserModelsTestCase(TestCase):
         self.assertTrue(user.is_active)
         self.assertFalse(user.has_admin_permissions)
         self.assertTrue(user.has_superadmin_permissions)
+        self.assertEqual(
+            str(user),
+            " ".join([user.name, user.last_name, user.second_last_name])
+        )
+
+
+class RoleModelsTestCase(TestCase):
+    """
+    Tests for the bookborrowing.users.models module.
+    """
+    fixtures = [
+        'roles'
+    ]
+
+    def test_role_model(self):
+        role = Role.objects.first()
+
+        self.assertEqual(role.name, 'superadmin')
+        self.assertEqual(role.description, 'Superadmin role')
+        self.assertEqual(str(role), "{}: {}".format(role.name, role.description))

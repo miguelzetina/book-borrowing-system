@@ -22,7 +22,7 @@ class Role(CatalogueMixin):
         verbose_name_plural = _('roles')
 
     def __str__(self):
-        return "Role: {0}".format(self.name)
+        return "{}: {}".format(self.name, self.description)
 
 
 class UserManager(BaseUserManager):
@@ -98,7 +98,7 @@ class User(AbstractBaseUser, PermissionsMixin, CatalogueMixin):
         resource_name = 'users'
 
     def __str__(self):
-        return self.name
+        return " ".join([self.name, self.last_name, self.second_last_name])
 
     @property
     def has_admin_permissions(self):
@@ -107,4 +107,3 @@ class User(AbstractBaseUser, PermissionsMixin, CatalogueMixin):
     @property
     def has_superadmin_permissions(self):
         return self.role.name == 'superadmin'
-
