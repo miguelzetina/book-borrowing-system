@@ -15,7 +15,6 @@ class Genre(CatalogueMixin):
     Model representing a book genre.
     """
     class Meta:
-        ordering = ['last_name', 'first_name']
         verbose_name = _('genre')
         verbose_name_plural = _('genres')
 
