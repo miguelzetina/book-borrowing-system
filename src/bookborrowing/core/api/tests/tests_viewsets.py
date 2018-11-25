@@ -11,17 +11,26 @@ class ApiTestMixin(object):
     Common operations for API testing
     """
 
-    def create_token(user):
+    def create_token(self, user):
         """
         Create token.
         """
         refresh = RefreshToken.for_user(user)
         token = text_type(refresh.access_token)
-        return token
+        return "JWT {}".format(token)
 
     def create_superuser(self):
         user = User.objects.create_superuser(
             email='superadmin@mail.com'
+        )
+        user.set_password('password')
+        user.save()
+        return user
+
+    def create_adminuser(self):
+        user = User(
+            email='admin@mail.com',
+            role_id=2
         )
         user.set_password('password')
         user.save()
