@@ -8,7 +8,7 @@ from rest_framework.permissions import AllowAny
 
 urlpatterns = [
     path(
-        'v1/', include(('bookborrowing.api.v1.urls', 'api'), namespace='v1')
+        'v1/', include(('bookborrowing.api.v1.urls', 'v1'), namespace='v1')
     ),
 ]
 

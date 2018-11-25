@@ -25,8 +25,17 @@ from bookborrowing.api import urls as api_urls
 urlpatterns = [
     re_path(
         r'^api-auth/',
-        include(('rest_framework.urls', 'rest_framework'), namespace='rest_framework')
+        include(
+            ('rest_framework.urls', 'rest_framework'),
+            namespace='rest_framework'
+        )
     ),
-    re_path(r'^api/', include(api_urls)),
+    re_path(
+        r'^api/',
+        include(
+            ('bookborrowing.api.urls', 'api'),
+            namespace='api'
+        )
+    ),
     path('', TemplateView.as_view(template_name="index.html"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
