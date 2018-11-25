@@ -69,6 +69,11 @@ class User(AbstractBaseUser, PermissionsMixin, CatalogueMixin):
         verbose_name=_('last name')
     )
 
+    second_last_name = models.CharField(
+        max_length=255,
+        verbose_name=_('second last name')
+    )
+
     role = models.ForeignKey(
         Role,
         related_name='users',
