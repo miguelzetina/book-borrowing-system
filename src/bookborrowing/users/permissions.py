@@ -8,7 +8,7 @@ class SimpleBasePermission(BasePermission):
     role = 'superadmin'
 
     def has_permission(self, request, view):
-        if not request.user.is_aunthenticated():
+        if not request.user.is_authenticated:
             return False
 
         property_name = 'has_{role}_permissions'.format(role=self.role)
@@ -22,7 +22,7 @@ class SimpleReadPermission(BasePermission):
     role = 'superadmin'
 
     def has_permission(self, request, view):
-        if request.method in SAFE_METHODS and request.user.is_authenticated():
+        if request.method in SAFE_METHODS and request.user.is_authenticated:
             property_name = 'has_{role}_permissions'.format(role=self.role)
             return getattr(request.user, property_name)
 
