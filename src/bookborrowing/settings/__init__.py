@@ -177,8 +177,7 @@ SWAGGER_SETTINGS = {
 # Django-rest-framework configuration
 REST_FRAMEWORK = {
     'PAGE_SIZE': 30,
-    'EXCEPTION_HANDLER':
-    'rest_framework_json_api.exceptions.exception_handler',  # noqa
+    'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',  # noqa
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
@@ -187,9 +186,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_FILTER_BACKENDS': (
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework_json_api.renderers.JSONRenderer',
         'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
