@@ -7,7 +7,7 @@
             "author": [1],
             "summary": "Summary",
             "isbn": "1234567890123",
-            "genre": [1]
+            "genre": [1, 2]
         }
     }
 ]

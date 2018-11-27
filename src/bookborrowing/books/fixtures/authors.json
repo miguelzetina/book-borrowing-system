@@ -5,8 +5,8 @@
         "fields": {
             "first_name": "First name",
             "last_name": "Last name",
-            "date_of_birth": null,
-            "date_of_death": null
+            "date_of_birth": "1995-10-18",
+            "date_of_death": "2018-11-27"
         }
     }
 ]

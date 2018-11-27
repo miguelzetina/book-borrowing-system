@@ -69,6 +69,9 @@ class Book(CatalogueMixin):
     class Meta:
         verbose_name = _('book')
         verbose_name_plural = _('books')
+    
+    class JSONAPIMeta:
+        resource_name = 'books'
 
 
 class BookInstance(models.Model):

@@ -5,5 +5,12 @@
         "fields": {
             "name": "Genre 1"
         }
+    },
+    {
+        "model": "books.genre",
+        "pk": 2,
+        "fields": {
+            "name": "Genre 2"
+        }
     }
 ]
