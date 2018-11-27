@@ -41,7 +41,6 @@ class UsersTests(APITestCase, ApiTestMixin):
             HTTP_AUTHORIZATION=token,
             format='json'
         )
-        data = json.loads(response._container[0].decode("utf-8"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_users_list_admin_200(self):
